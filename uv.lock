@@ -2280,12 +2280,14 @@ source = { virtual = "." }
 dependencies = [
     { name = "pyannote-audio" },
     { name = "python-dotenv" },
+    { name = "torch" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "pyannote-audio", specifier = ">=4.0.1" },
     { name = "python-dotenv", specifier = ">=1.1.1" },
+    { name = "torch", specifier = ">=2.9.0" },
 ]
 
 [[package]]
