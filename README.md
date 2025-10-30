@@ -13,3 +13,13 @@ To convert to 16-bit WAV files, [ffmpeg](https://ffmpeg.org/) was used
 ```
 ffmpeg -i input.mp3 -ar 16000 -ac 1 -c:a pcm_s16le output.wav
 ```
+
+Diarization
+-----
+Diarization is the process of partitioning an audio stream into segments according to the identity of the speaker. Essentially, it answers the question "Who spoke when?"
+
+Pyannote [Community-1 model from hf](https://huggingface.co/pyannote/speaker-diarization-community-1). `pyannote_test.py` using `test.wav` in videos folder. Agreeing to pyannote on hugging face along with hf token.
+
+```
+uv run python pyannote_test.py
+```
