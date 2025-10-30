@@ -12,7 +12,7 @@ HUGGINGFACE_ACCESS_TOKEN = os.getenv('HUGGINGFACE_ACCESS_TOKEN')
 downloads_path = Path.home() / "Downloads"
 
 # Access specific .wav file
-file_path = downloads_path / "test.wav" 
+file_path = downloads_path / "output.wav" 
 
 # Community-1 open-source speaker diarization pipeline
 pipeline = Pipeline.from_pretrained(
@@ -28,4 +28,4 @@ with ProgressHook() as hook:
 
 # print the result
 for turn, speaker in output.speaker_diarization:
-    print(f"start={turn.start:.1f}s stop={turn.end:.1f}s speaker_{speaker}")
+    print(f"start={turn.start:.2f}s stop={turn.end:.2f}s speaker_{speaker}")
