@@ -32,3 +32,5 @@ Transcription is the computational process of converting spoken language in an a
 ```
 whisper.cpp/build/bin/whisper-cli -m whisper.cpp/models/ggml-large-v3-turbo.bin -f videos/test.wav
 ```
+
+The two processes of diarization and transcribing are seperate. Looking at a write up by [BrassTranscripts Best Speakers Diarization Models Compared[2026]](https://brasstranscripts.com/blog/speaker-diarization-models-comparison) leads me to test out [WhisperX](https://github.com/m-bain/whisperX)
