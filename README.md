@@ -46,3 +46,13 @@ With `transcribe.sh` to run whisperx to video
 ```
 ./transcribe.sh path/to/video.mp4
 ```
+
+Whisperx outputs 5 files extension and they do not have exact outputs in each file
+
+| Extension | Name | Description | Best Use Case |
+| :--- | :--- | :--- | :--- |
+| **.srt** | SubRip Subtitles | The industry standard for video players. Includes timestamps and speaker IDs. | YouTube, VLC, and social media video. |
+| **.vtt** | WebVTT | Similar to SRT but with extra metadata capabilities. | HTML5 web-based video players. |
+| **.txt** | Plain Text | A raw transcript with no timestamps or formatting. | Reading or feeding into an LLM for summarization. |
+| **.json** | JSON | Data-heavy file containing word-level timestamps and speaker probabilities. | Developers and API integrations. |
+| **.tsv** | Tab-Separated | A spreadsheet-friendly version with start, end, and text columns. | Data analysis in Excel or Google Sheets. |
