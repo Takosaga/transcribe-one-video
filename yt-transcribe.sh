@@ -23,8 +23,9 @@ TRANSCRIPT_DIR="./transcripts"
 
 mkdir -p "$AUDIO_DIR" "$TRANSCRIPT_DIR"
 
-# 2. Extract Video ID
-VIDEO_ID=$(yt-dlp --get-id "$URL")
+# 2. Extract Video ID using uvx
+# uvx ensures yt-dlp is fetched/run in an isolated environment
+VIDEO_ID=$(uvx yt-dlp --get-id "$URL")
 
 if [ -z "$VIDEO_ID" ]; then
     echo "Error: Could not retrieve Video ID."
@@ -33,9 +34,9 @@ fi
 
 EXPECTED_FILE="$AUDIO_DIR/$VIDEO_ID.wav"
 
-# 3. Download and Convert
+# 3. Download and Convert using uvx
 echo "--- Downloading audio for: $VIDEO_ID ---"
-yt-dlp -x --audio-format wav -P "$AUDIO_DIR" -o "%(id)s.%(ext)s" "$URL"
+uvx yt-dlp -x --audio-format wav -P "$AUDIO_DIR" -o "%(id)s.%(ext)s" "$URL"
 
 # 4. Transcribe with WhisperX
 if [ -f "$EXPECTED_FILE" ]; then
