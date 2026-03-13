@@ -1,4 +1,25 @@
 # Understanding transcribing one video
+Quick Start
+-----
+Checklist:
+- [ ] [uv](https://docs.astral.sh/uv/getting-started/installation/) installed
+- [ ] [hugging face](https://huggingface.co/login) account
+- [ ] [Granted access](https://huggingface.co/pyannote/speaker-diarization-community-1) to pyannote/speaker-diarization-community-1
+- [ ] [Hugging Face Access token](https://huggingface.co/settings/tokens) Steps: Create New Token > Token type: Read > name as you wish > Create Token > Copy
+- [ ] .env file with in folder `HUGGINGFACE_ACCESS_TOKEN=YOUR_HF_ACCESS_TOKEN_YOU_COPIED`
+
+In terminal or ide with root of folder
+
+```bash
+uv venv && uv sync
+uvx whisperx
+./transcribe.sh INSERT_YOUTUBE_LINK_HERE
+```
+
+
+
+Motivation
+-----
 
 Has there been a time when you have watched or listened to a video/podcast and you wanted to go back to a topic that was talked about?
 This is a project to build something that can solve this problem and document the process. Local machine was used along with a RTX 5060 16 GB Ti.
