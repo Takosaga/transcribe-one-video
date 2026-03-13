@@ -1,4 +1,25 @@
 # Understanding transcribing one video
+Quick Start
+-----
+Checklist:
+- [ ] [uv](https://docs.astral.sh/uv/getting-started/installation/) installed
+- [ ] [hugging face](https://huggingface.co/login) account
+- [ ] [Granted access](https://huggingface.co/pyannote/speaker-diarization-community-1) to pyannote/speaker-diarization-community-1
+- [ ] [Hugging Face Access token](https://huggingface.co/settings/tokens) Steps: Create New Token > Token type: Read > name as you wish > Create Token > Copy
+- [ ] .env file with in folder `HUGGINGFACE_ACCESS_TOKEN=YOUR_HF_ACCESS_TOKEN_YOU_COPIED`
+
+In terminal or ide with root of folder
+
+```bash
+uv venv && uv sync
+uvx whisperx
+./transcribe.sh INSERT_YOUTUBE_LINK_HERE
+```
+
+
+
+Motivation
+-----
 
 Has there been a time when you have watched or listened to a video/podcast and you wanted to go back to a topic that was talked about?
 This is a project to build something that can solve this problem and document the process. Local machine was used along with a RTX 5060 16 GB Ti.
@@ -32,3 +53,27 @@ Transcription is the computational process of converting spoken language in an a
 ```
 whisper.cpp/build/bin/whisper-cli -m whisper.cpp/models/ggml-large-v3-turbo.bin -f videos/test.wav
 ```
+
+Diarization & Transcribing
+---
+
+The two processes of diarization and transcribing are seperate. Looking at a write up by [BrassTranscripts Best Speakers Diarization Models Compared[2026]](https://brasstranscripts.com/blog/speaker-diarization-models-comparison) leads me to test out [WhisperX](https://github.com/m-bain/whisperX)
+
+```bash
+uvx whisperx
+```
+
+With `transcribe.sh` to run whisperx to video
+```
+./transcribe.sh path/to/video.mp4
+```
+
+Whisperx outputs 5 files extension and they do not have exact outputs in each file
+
+| Extension | Name | Description | Best Use Case |
+| :--- | :--- | :--- | :--- |
+| **.srt** | SubRip Subtitles | The industry standard for video players. Includes timestamps and speaker IDs. | YouTube, VLC, and social media video. |
+| **.vtt** | WebVTT | Similar to SRT but with extra metadata capabilities. | HTML5 web-based video players. |
+| **.txt** | Plain Text | A raw transcript with no timestamps or formatting. | Reading or feeding into an LLM for summarization. |
+| **.json** | JSON | Data-heavy file containing word-level timestamps and speaker probabilities. | Developers and API integrations. |
+| **.tsv** | Tab-Separated | A spreadsheet-friendly version with start, end, and text columns. | Data analysis in Excel or Google Sheets. |

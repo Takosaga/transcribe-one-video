@@ -6,4 +6,5 @@ dependencies = [
     "pyannote-audio>=4.0.1",
     "python-dotenv>=1.1.1",
     "torch>=2.9.0",
+    "yt-dlp>=2026.3.3",
 ]
